@@ -1,0 +1,7 @@
+# Lint against our minimum supported Ruby (see gemspec required_ruby_version),
+# not whatever Ruby happens to run the linter. Without this, RuboCop infers the
+# target from the running Ruby: CI lints on 3.3 and flags `require "set"` /
+# `keyword_init: true` as redundant, but both are required on 3.1 — removing
+# them would break the 3.1 test job. Pinning the target keeps local and CI in
+# agreement.
+ruby_version: 3.1
